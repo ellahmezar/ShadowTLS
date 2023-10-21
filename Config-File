@@ -38,7 +38,7 @@
       "users": [
         {
           "name": "username",
-          "password": "XTVsAyFnREiRn5hgrjUAu8a9dSsicFKYIJM+K8+Iv8g="
+          "password": "wdW/alRDTkLIsiBO83w5bvJUyE/SXrLXjImM2Ts9cO8="
         }
       ],
       "handshake": {
@@ -54,7 +54,7 @@
       "listen": "127.0.0.1",
       "network": "tcp",
       "method": "2022-blake3-chacha20-poly1305",
-      "password": "NZew3ZrmZjxullszmAKtfu+pZh0F1dxnIPcwlaStjyI="
+      "password": "ULMiMrwB+4C+Nv50BdNiUk7t3IV4RWSnlArKHLOkJfU="
     }
   ], 
   "outbounds": [
@@ -84,6 +84,12 @@
       },
       {
         "geosite": "category-ads-all",
+        "outbound": "block"
+      },
+      {
+        "network": [
+         "udp"
+        ],
         "outbound": "block"
       }
     ]
