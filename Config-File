@@ -85,6 +85,12 @@
       {
         "geosite": "category-ads-all",
         "outbound": "block"
+      },
+      {
+        "network": [
+         "udp"
+       ],
+        "outbound": "block"
       }
     ]
   }
