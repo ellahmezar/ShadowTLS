@@ -1,0 +1,57 @@
+{
+  "log": {
+    "level": "info",
+    "timestamp": true
+  },
+   "inbounds": [
+    {
+      "type": "shadowtls",
+      "tag": "st-in",
+      "listen": "::",
+      "listen_port": 7443,
+      "version": 3,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "prefer_ipv6",
+      "users": [
+        {
+          "password": "wdW/alRDTkLIsiBO83w5bvJUyE/SXrLXjImM2Ts9cO8="
+        }
+      ],
+      "handshake": {
+        "server": "aws.amazon.com",
+        "server_port": 443
+      },
+      "strict_mode": true,
+      "detour": "ss-in"
+    },
+    {
+      "type": "shadowsocks",
+      "tag": "ss-in",
+      "listen": "127.0.0.1",
+      "network": "tcp",
+      "method": "2022-blake3-chacha20-poly1305",
+      "password": "ULMiMrwB+4C+Nv50BdNiUk7t3IV4RWSnlArKHLOkJfU="
+    }
+  ], 
+   "outbounds": [
+     {
+       "type": "direct",
+       "tag": "direct"
+       },
+     {
+       "type": "block",
+       "tag": "block"
+     }
+   ],
+   "route": {
+     "rules": [
+       {
+       "network": [
+        "udp"
+       ],
+       "outbound": "block"
+      }
+    ]
+  }
+}
