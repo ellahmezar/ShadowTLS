@@ -53,7 +53,6 @@
       ],
       "private_key": "ANmUN2LxtUJfHknYsGgyl8TfLL094UnKmOtYGj4IZWk=",
       "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
-      "pre_shared_key": "",
       "reserved": "Elf4",
       "workers": 8,
       "mtu": 1280
