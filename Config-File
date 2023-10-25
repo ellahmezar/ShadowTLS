@@ -1,97 +1,71 @@
 {
   "log": {
-    "disabled": false,
     "level": "info",
     "timestamp": true
   },
-  "dns": {
-    "servers": [
+    "route": {
+      "rules": [
       {
-        "tag": "local",
-        "address": "https://8.8.8.8/dns-query",
-        "detour": "direct"
-      },
-      {
-        "tag": "block",
-        "address": "rcode://success"
+     "network": [
+      "udp"
+      ],
+     "outbound": "block"
       }
-    ],
-    "rules": [
-      {
-        "geosite": "cn",
-        "server": "local"
-      },
-      {
-        "geosite": "category-ads-all",
-        "server": "block",
-        "disable_cache": true
-      }
-    ]
-  },
+       ]
+         },
   "inbounds": [
     {
-      "type": "shadowtls",
-      "tag": "st-in",
+      "type": "trojan",
+      "tag": "trojan-in",
       "listen": "::",
       "listen_port": 7443,
-      "version": 3,
+      "sniff": true,
+      "sniff_override_destination": true,
+      "domain_strategy": "prefer_ipv6",
       "users": [
         {
-          "name": "username",
-          "password": "wdW/alRDTkLIsiBO83w5bvJUyE/SXrLXjImM2Ts9cO8="
+          "password": "8888e0a9-3731-4302-abcd-091ed1faf8b6"
         }
       ],
-      "handshake": {
-        "server": "www.apple.com",
-        "server_port": 443
+      "tls": {
+        "enabled": true,
+        "server_name": "speed.cloudflare.com",
+	"alpn": ["h3", "spdy/3.1"],
+        "reality": {
+          "enabled": true,
+          "handshake": {
+            "server": "speed.cloudflare.com",
+            "server_port": 443
+          },
+          "private_key": "mOPcntEEW3kKv2bV7CriUCntnWaIQAri0YX4ndz2jnw",
+          "short_id": [
+            "069c5fa05902862f"
+          ]
+        }
       },
-      "strict_mode": true,
-      "detour": "ss-in"
-    },
-    {
-      "type": "shadowsocks",
-      "tag": "ss-in",
-      "listen": "127.0.0.1",
-      "network": "tcp",
-      "method": "2022-blake3-chacha20-poly1305",
-      "password": "ULMiMrwB+4C+Nv50BdNiUk7t3IV4RWSnlArKHLOkJfU="
+      "transport": {
+        "type": "grpc"
+     }
     }
   ],
   "outbounds": [
     {
-      "type": "direct",
-      "tag": "direct"
-    },
-    {
-      "type": "block",
-      "tag": "block"
+      "type": "wireguard",
+      "tag": "wireguard-out",
+      "server": "188.114.97.195",
+      "server_port": 4500,
+      "domain_strategy": "prefer_ipv6",
+      "system_interface": false,
+      "interface_name": "wg0",
+      "local_address": [
+        "172.16.0.2/32"
+      ],
+      "private_key": "ANmUN2LxtUJfHknYsGgyl8TfLL094UnKmOtYGj4IZWk=",
+      "peer_public_key": "bmXOC+F1FxEMF9dyiK2H5/1SUtzH0JuVo51h2wPfgyo=",
+      "pre_shared_key": "",
+      "reserved": "Elf4",
+      "workers": 8,
+      "mtu": 1280
+           }
+        ]
     }
-  ],
-  "route": {
-    "geoip": {
-      "download_url": "https://github.com/SagerNet/sing-geoip/releases/latest/download/geoip.db",
-      "download_detour": "direct"
-    },
-    "geosite": {
-      "download_url": "https://github.com/SagerNet/sing-geosite/releases/latest/download/geosite.db",
-      "download_detour": "direct"
-    },
-    "rules": [
-      {
-        "geosite": "cn",
-        "geoip": "cn",
-        "outbound": "direct"
-      },
-      {
-        "geosite": "category-ads-all",
-        "outbound": "block"
-      },
-      {
-        "network": [
-         "udp"
-       ],
-        "outbound": "block"
-      }
-    ]
-  }
-}
