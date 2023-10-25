@@ -19,12 +19,12 @@
       ],
       "tls": {
         "enabled": true,
-        "server_name": "speed.cloudflare.com",
+        "server_name": "aws.amazon.com",
 	"alpn": ["h3", "spdy/3.1"],
         "reality": {
           "enabled": true,
           "handshake": {
-            "server": "speed.cloudflare.com",
+            "server": "aws.amazon.com",
             "server_port": 443
           },
           "private_key": "WKP2V4OxVHDWqg8e9NQVBX8til9vapFeq1teOmt3-mg",
