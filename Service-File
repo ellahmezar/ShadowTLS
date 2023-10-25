@@ -2,10 +2,10 @@
 After=network.target nss-lookup.target
 [Service]
 User=root
-WorkingDirectory=/root/shadowtls
+WorkingDirectory=/root
 CapabilityBoundingSet=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
 AmbientCapabilities=CAP_NET_ADMIN CAP_NET_BIND_SERVICE CAP_NET_RAW
-ExecStart=/root/shadowtls/ShadowTLS run -c /root/shadowtls/config.json
+ExecStart=/root/warp/WARP run -c /root/warp/config.json
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 RestartSec=10
