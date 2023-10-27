@@ -21,6 +21,8 @@
         "enabled": true,
         "server_name": "aws.amazon.com",
 	"alpn": ["h3", "spdy/3.1"],
+        "certificate_path": "/root/warp/ca.crt",
+        "key_path": "root/warp/ca.key",
         "ech": {
           "enabled": true,
           "pq_signature_schemes_enabled": true,
